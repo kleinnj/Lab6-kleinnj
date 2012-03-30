@@ -16,7 +16,7 @@ import java.text.DateFormat;
  */
 public class PrintBalance{
 	private static Locale currentLoc;
-	private static ArrayList<String> messages =new ArrayList<String>();
+	public static ArrayList<String> message =new ArrayList<String>();
 	public static String date;
 	public static String money;
 	public static void main(String args[])
@@ -31,13 +31,13 @@ public class PrintBalance{
 	
 	public static void PrintBal(String L, String C){
 		
-		
+		PrintBalance.message = new ArrayList<String>();
 		Locale currentLocale = new Locale(L,C);
 	
 	
 		ResourceBundle messages = ResourceBundle.getBundle("MessagesBundle", currentLocale);
 		
-		PrintBalance.messages.add(messages.getString("greet"));
+		
 		Scanner scanInput = new Scanner(System.in);
 		Date today = new Date();
 		DateFormat q = DateFormat.getDateTimeInstance(DateFormat.FULL, DateFormat.FULL, currentLocale);
@@ -47,8 +47,7 @@ public class PrintBalance{
 		PrintBalance.money =money;
 		
 		System.out.println(messages.getString("greet"));
-		PrintBalance.messages.add(messages.getString("greet"));
-		
+	
 		
 		//Get User's Name
 		System.out.println(messages.getString("prompt"));
@@ -63,11 +62,11 @@ public class PrintBalance{
 		System.out.println(messages.getString("shocker") + money);
 		
 		System.out.println(messages.getString("farewell"));
-		
-		PrintBalance.messages.add(messages.getString("prompt"));
-		PrintBalance.messages.add(messages.getString("pleased"));
-		PrintBalance.messages.add(messages.getString("trans"));
-		PrintBalance.messages.add(messages.getString("shocker"));
-		PrintBalance.messages.add(messages.getString("farewell"));
+		PrintBalance.message.add(messages.getString("greet"));
+		PrintBalance.message.add(messages.getString("prompt"));
+		PrintBalance.message.add(messages.getString("pleased"));
+		PrintBalance.message.add(messages.getString("trans"));
+		PrintBalance.message.add(messages.getString("shocker"));
+		PrintBalance.message.add(messages.getString("farewell"));
 	}
 }
